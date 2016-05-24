@@ -1,0 +1,93 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Broadsheet</title>
+</head>
+<body>
+<header>
+{{ timestamp.strftime('%A, %b %d, %Y, %I:%M %p') }}
+</header>
+{% for article in articles %}
+<article>
+    <header>
+        {% if article.feed.title %}
+        <div class="feed-title">
+            {% if article.feed.link %}
+                <a href="{{ article.feed.link }}" target="_blank"><img src="https://www.google.com/s2/favicons?domain_url={{ article.feed.link }}"/> {{ article.feed.title }}</a>
+            {% else %}
+                {{ article.feed.title }}
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if article.link %}
+            <h1><a href="{{article.link }}" target="_blank">{{ article.title }}</a></h1>
+        {% elif article.title %}
+            <h1>{{ article.title }}</h1>
+        {% endif %}
+        
+        {% if article.author %}
+            <div class="byline">
+            {% if article.author_detail %}
+            <address>
+                {% if article.author_detail.href %}
+                    <a href="{{ article.author_detail.href }}" target="_blank">{{ article.author_detail.name }}</a>
+                {% else %}
+                    {{ article.author }}
+                {% endif %}
+            </address>
+            {% endif %}
+            {% if article.updated_parsed or article.published_parsed %}
+            <span class="timestamp">
+            {% if article.updated_parsed %}
+                {% with updated = (article.updated_parsed|datetime) %}
+                Updated <time datetime="{{ updated.isoformat() }}">{{ updated }}</time>
+                {% endwith %}
+            {% elif article.published_parsed %}
+                {% with pub_date = (article.published_parsed|datetime) %}
+                <time datetime="{{ pub_date.isoformat() }}">{{ pub_date }}</time>
+                {% endwith %}
+            {% endif %}
+            </span>
+            {% endif %}
+            </div>
+        {% endif %}
+    </header>
+
+    <main>
+    {% for enclosure in article.enclosures %}
+        {% if enclosure.type.startswith('image/') %}
+        <a href="{{ enclosure.href }}" target="_blank"><img src="{{ enclosure.href }}"/></a>
+        {% endif %}
+    {% endfor %}
+    {% if article.content %}
+        {% for content in article.content %}
+        <div>
+            {% if content.type in ['text/html', 'application/xhtml+xml'] %}
+                {{ content.value }}
+            {% endif %}
+        </div>
+        {% endfor %}
+    {% elif article.summary %}
+        <div>
+        {{ article.summary }}
+    {% endif %}
+
+    {% for link in article.links if link.rel == 'related' %}
+        {% if loop.first %}
+        <ul class="related-links">
+        {% endif %}
+            <li><a href="{{ link.href }}" target="_blank">{{ link.title or link.href }}</a></li>
+        {% if loop.last %}
+        </ul>
+        {% endif %}
+    {% endfor %}
+    </main>
+</article>
+{% endfor %}
+<footer>
+Link to Previous Edition
+</footer>
+</body>
+</html>
