@@ -1,11 +1,82 @@
+@import url(http://fonts.googleapis.com/css?family=Archivo+Narrow);
 
-@import url(https://fonts.googleapis.com/css?family=Archivo+Narrow);
+@media all {html {font-size: 24px;}}
+@media all and (max-width:1000px){html {font-size: 24px;}}
+@media all and (max-width:960px){html {font-size: 23px;}}
+@media all and (max-width:920px){html {font-size: 22px;}}
+@media all and (max-width:880px){html {font-size: 21px;}}
+@media all and (max-width:840px){html {font-size: 20px;}}
+@media all and (max-width:800px){html {font-size: 19px;}}
+@media all and (max-width:760px){html {font-size: 18px;}}
+@media all and (max-width:720px){html {font-size: 17px;}}
+@media all and (max-width:680px){html {font-size: 16px;}}
+@media all and (max-width:640px){html {font-size: 15px;}}
+@media all and (max-width:600px){html {font-size: 14px;}}
+@media all and (max-width:560px){html {font-size: 13px;}}
+
+@media all and (max-width:520px) {
+    html {font-size: 18px;}
+}
+
+@media all and (min-device-width:375px) and (max-device-width:667px) { }
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, li p {
+    font-family: 'Georgia', serif;
+}
+
+li {
+    -moz-column-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    -o-column-break-inside: avoid;
+    -ms-column-break-inside: avoid;
+    column-break-inside: avoid;
+    -moz-break-inside: avoid-column;
+    -webkit-break-inside: avoid-column;
+    -o-break-inside: avoid-column;
+    -ms-break-inside: avoid-column;
+    break-inside: avoid-column;
+}
+
+html {
+    height: 100%;
+}
 
 body {
-    max-width: 30rem;
-    font-size: 18px;
-    font-family: 'Georgia', serif;
-    line-height: 1.40;
+    padding: 0rem 0rem;
+
+    margin-left:auto;
+    margin-right:auto;
+    width:95%;
+    max-width:30rem;
+    min-height: 100%;
+    text-rendering: optimizeLegibility;
+    -moz-font-feature-settings: 'kern=1';
+    -moz-font-feature-settings: 'kern' 1;
+    -webkit-font-feature-settings: 'kern' 1;
+    -o-font-feature-settings: 'kern' 1;
+    -ms-font-feature-settings: 'kern' 1;
+    font-feature-settings: 'kern' 1;
+
+    text-rendering: optimizeLegibility;
+    -moz-font-feature-settings: 'liga=1';
+    -moz-font-feature-settings: 'liga' 1;
+    -webkit-font-feature-settings: 'liga' 1;
+    -o-font-feature-settings: 'liga' 1;
+    -ms-font-feature-settings: 'liga' 1;
+    font-feature-settings: 'liga' 1;
+
+    position: relative; z-index: -10000;
+}
+
+body > * {
+    font-size: 100%;
+    max-width: 100%;
+    margin: auto;
 }
 
 a {
@@ -13,12 +84,16 @@ a {
     text-decoration: none;
 }
 
-body > header {
-    font-size: 14px;
+body > header,footer {
+    font-size: 0.8rem;
     font-variant: small-caps;
     text-align: center;
-    padding-bottom: 0.3rem; 
+    padding: 0.5rem; 
     border-bottom: 2px #EEE solid;
+}
+
+body > footer {
+    margin-bottom: 3rem;
 }
 
 article {
@@ -34,7 +109,7 @@ article header {
 
 article header .feed-title {
     color: gray;
-    font-size: 14px;
+    font-size: 0.7rem;
     vertical-align: middle;
 }
 
@@ -51,9 +126,9 @@ article header .feed-title a {
 }
 
 article header h1 {
-    font-size: 26px;
+    font-size: 1.2rem;
     font-family: 'Archivo Narrow', sans-serif;
-    margin: 10px auto;
+    margin: 0.7rem auto;
 }
 
 article header h1 a {
@@ -62,18 +137,17 @@ article header h1 a {
 }
 
 article header .byline {
-    font-size: 14px;
+    font-size: 0.7rem;
     font-style: italic;
 }
 
-article header address {
-    font-size: 14px;
-    display: inline;
-    margin-right: 1em;
+article header address, .timestamp {
+    font-size: 0.7rem;
 }
 
-article header .timestamp {
-    font-size: 14px;
+article > header address {
+    display: inline;
+    margin-right: 1em;
 }
 
 article header .timestamp time {
@@ -81,11 +155,29 @@ article header .timestamp time {
 }
 
 article * {
-    max-width: 30rem;
+    max-width: 100%;
 }
 
 article:after {
     clear: both;
+}
+
+article main {
+    line-height: 1.4;
+}
+
+article > main h1,h2,h3,h4,h5,h6 {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+article main p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+article main p:empty {
+    display: none;
 }
 
 article main a {
@@ -107,33 +199,43 @@ article iframe {
     max-width: inherit;
 }
 
-article blockquote {
+article > main blockquote {
     line-height: 1.4;
     margin: 1rem auto;
     padding: 0em 1em;
     border-left: 1px #AAA dashed;
 }
 
-article caption,.wp-caption-text {
-    font-size: 14px;
-    line-height: 130%;
-    padding-left: 2em;
+article > main ol, ul {
+    margin: auto 1.5rem;
 }
 
-article ul.related-links {
+article > main li {
+    padding-left: 1rem;
+}
+
+article > main caption,.wp-caption-text {
+    font-size: 0.7rem;
+    line-height: 130%;
+    margin: auto 0.5rem;
+}
+
+article > main ul.related-links {
     list-style-type: none;
+    margin: 0.5rem auto;
     padding-left: 0px;
 }
 
-article ul.related-links li {
+article > main ul.related-links li {
     margin: 0 auto;
+    padding: 0;
     max-width: inherit;
-    font-size: 18px;
+    font-size: 1rem;
     color: #222;
     border-bottom
 }
 
-article ul.related-links li::after {
+article > main ul.related-links li::after {
     content: "";
     border-bottom:1px #EEE solid;
     width:20%;
@@ -141,11 +243,11 @@ article ul.related-links li::after {
     margin: 0.5rem auto 0.4rem;
 }
 
-article ul.related-links li:last-child:after {
+article > main ul.related-links li:last-child:after {
     display:none;
 }
 
-article .related-links a {
+article > main .related-links a {
     text-decoration: none;
     color: inherit;
     border: none;

@@ -1,28 +1,45 @@
+import argparse
 from datetime import datetime, date, time, timedelta
 import itertools
+import sys
 from time import mktime
 
-from jinja2 import Environment, PackageLoader
+import dateparser
+from jinja2 import Environment, PackageLoader, FileSystemLoader
 import eventlet
 import yaml
 
+import ssl
+if hasattr(ssl, '_create_unverified_context'):
+        ssl._create_default_https_context = ssl._create_unverified_context
 
-feedparser = eventlet.import_patched('feedparser')
+#feedparser = eventlet.import_patched('feedparser')
+import feedparser
+#requests = eventlet.import_patched('requests')
+import requests
 
+feedparser.USER_AGENT = "Broadsheet/0.1 +http://dancraig.net/broadsheet/"
 feedparser._HTMLSanitizer.acceptable_elements.add('iframe')
 
 pool = eventlet.GreenPool()
 
 def crawl_feed(url, feed_title=None):
     """Take a feed, return articles"""
-    result = feedparser.parse(url)
-    print url, result.get('status', 'No Status')
+    print url
+    try:
+        response = requests.get(url)
+        print response
+        if not response.ok:
+            return []
+        result = feedparser.parse(response.text)
 
-    entries = [entry for entry in result.entries]
-    for entry in entries:
-        entry['feed'] = result.feed
-    return entries
-
+        entries = [entry for entry in result.entries]
+        for entry in entries:
+            entry['feed'] = result.feed
+        return entries
+    except Exception as e:
+        print e
+        return []
 
 def key_by_date(article):
     """Key function to sort articles by date"""
@@ -57,7 +74,6 @@ def listify(articles, title=None):
 def truncate(articles, max_num=5):
     return articles[:max_num]
 
-
 def article_timestamp(article):
     timestruct = article.get('updated_parsed') or article.get('published_parsed')
     if not timestruct:
@@ -86,9 +102,9 @@ def filter_by_datetime_range(articles, start=None, end=None):
     
     Start and stop could be either dates or datetimes. If dates, start will
     be assumed to be the start of the day and end will be the end of the day'''
-    if isinstance(start, date):
+    if type(start) is date:
         start = datetime.combine(start, time.min)
-    if isinstance(end, date):
+    if type(end) is date:
         end = datetime.combine(end, time.min)
 
     for article in articles:
@@ -131,8 +147,10 @@ def process_subscriptions(subscriptions):
         url = subscription['url']
         alternate_title = subscription.get('title')
         post_processors = subscription.get('post_processors', [])
-        pile.spawn(process_feed, url, alternate_title, post_processors)
-    all_articles = list(itertools.chain.from_iterable(pile))
+        #pile.spawn(process_feed, url, alternate_title, post_processors)
+        articles = process_feed(url, alternate_title, post_processors)
+        all_articles.extend(articles)
+    #all_articles = list(itertools.chain.from_iterable(pile))
     all_articles.sort(key=key_by_date, reverse=True)
     return list(all_articles)
 
@@ -141,24 +159,48 @@ def time_struct_to_datetime(time_struct):
     return datetime(*time_struct[:6])
 
 
-def render(articles):
-    env = Environment(loader=PackageLoader('broadsheet', 'templates'),
+def render(articles, timestamp=None, previous=None):
+    timestamp = timestamp or datetime.now()
+    # env = Environment(loader=PackageLoader('broadsheet', 'templates'),
+    env = Environment(loader=FileSystemLoader('broadsheet/templates'),
                       extensions=['jinja2.ext.with_'])
     env.filters['datetime'] = time_struct_to_datetime
 
-    return env.get_template('index.html').render(articles=articles, timestamp=datetime.now())
+    return env.get_template('index.html').render(articles=articles,
+                                                 timestamp=timestamp,
+                                                 previous=previous)
 
 
-def main():
-    with open('subscriptions.yaml') as file_:
-        subscriptions = yaml.load(file_)
-    start = date.today() - timedelta(days=7)
+def main(subscriptions, start=None, stop=None, previous=None):
     all_articles = process_subscriptions(subscriptions)
     all_articles = filter_by_datetime_range(all_articles, start=start)
-    html = render(articles=all_articles)
-    with open('feeds.html', 'w') as f:
-        f.write(html.encode('utf-8'))
-    return all_articles
+    return render(articles=all_articles, previous=previous)
+
+def datetime_type(string):
+    if not string:
+        return None
+    dt = dateparser.parse(string)
+    if isinstance(dt, datetime):
+        return dt
+    raise argparse.ArgumentTypeError('%s did not parse as a datetime' % string)
+
+
+def cli():
+    parser = argparse.ArgumentParser(description="Generate a file of feeds")
+    parser.add_argument('-s', '--start', help='Start date', type=datetime_type, default=None)
+    parser.add_argument('-p', '--previous', help='Previous date', type=datetime_type, default=None)
+    # parser.add_argument('-z', '--time-zone', help='Time zone', default='US/Pacific')
+    parser.add_argument('-o', '--outfile', nargs='?', type=argparse.FileType('w'),
+                        default=sys.stdout)
+    parser.add_argument('subscriptions', nargs='?', type=argparse.FileType('r'),
+                         default=sys.stdin)
+
+    args = parser.parse_args()
+
+    subscriptions = yaml.load(args.subscriptions)
+    html = main(subscriptions, start=args.start, previous=args.previous)
+    args.outfile.write(html.encode('utf-8'))
+    
 
 if __name__ == '__main__':
-    main()
+    cli()

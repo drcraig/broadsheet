@@ -1,6 +1,8 @@
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>Broadsheet</title>
 </head>
@@ -87,7 +89,9 @@
 </article>
 {% endfor %}
 <footer>
-Link to Previous Edition
+{% if previous %}
+<a href="{{ previous.strftime('%Y-%m-%d') }}">Go to {{ previous.strftime('%A, %b %d, %Y') }}</a>
+{% endif %}
 </footer>
 </body>
 </html>

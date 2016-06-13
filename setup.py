@@ -15,5 +15,14 @@ setup(
     author_email='drcraig@gmail.com',
     version=__version__,
     packages=find_packages(),
-    install_requires=[]
+    install_requires=[
+        "flask",
+        "Flask-Script",
+        "feedparser",
+        "eventlet",
+        "dateparser",
+        "pyOpenSSL",
+        "ndg-httpsclient",
+        "pyasn1",
+    ]
 )

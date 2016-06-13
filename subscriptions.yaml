@@ -1,0 +1,100 @@
+- url: https://talkingpointsmemo.com/account/feed/edblog/pC9CbioSxzNtMSqPf1hXKpBQhb528LxXtmuQdS49y2Ur
+  title: Talking Points Memo - Editors Blog
+- url: http://daringfireball.net/feeds/main
+- url: https://www.nasa.gov/rss/image_of_the_day.rss
+- url: http://rss.slashdot.org/Slashdot/slashdotMain
+  post_processors: 
+    - daily_digest
+- url: http://xkcd.com/atom.xml
+- url: http://www.wired.com/feed/
+  post_processors: 
+    - daily_digest
+- url: https://www.oreilly.com/topics/four-short-links/feed.atom
+- url: http://earthobservatory.nasa.gov/Feeds/rss/eo2.rss
+- url: http://feeds.kottke.org/main
+- url: http://feeds.feedburner.com/CalculatedRisk
+- url: http://feeds2.feedburner.com/ButtonwoodsNotebook
+- url: http://feedproxy.google.com/maproom
+- url: http://boston1775.blogspot.com/feeds/posts/default?alt=rss
+- url: http://bostonography.com/feed/
+- url: http://feeds.feedburner.com/Betterexplained
+- url: http://theoatmeal.com/feed/rss
+- url: https://feeds.feedburner.com/robinsloan
+- url: https://feeds.feedburner.com/RussellDavies
+- url: http://www.universalhub.com/node/feed
+  post_processors: 
+    - daily_digest
+- url: http://alum.mit.edu/pages/sliceofmit/feed/
+- url: http://www.npr.org/rss/rss.php?id=2100422
+- url: http://feeds.feedburner.com/PhilGyfordsWriting
+- url: http://feeds.feedburner.com/schneier/fulltext
+- url: http://feeds2.feedburner.com/subtraction
+- url: http://www.aeonmagazine.com/feed/
+- url: http://clivethompson.net/feed/
+- url: http://www.holovaty.com/rss/
+- url: http://www.zephoria.org/thoughts/feed
+- url: http://feeds.dashes.com/AnilDash
+- url: https://www.alistapart.com/site/rss
+- url: http://blog.okcupid.com/index.php/feed/
+- url: http://mikethemadbiologist.com/feed/
+- url: http://www.guardian.co.uk/profile/martin-robbins/rss
+- url: https://mit2003classnotes.blogspot.com/feeds/posts/default
+- url: http://news.google.com/news?hl=en&gl=us&as_epq=&as_oq="Sigma+Chi"+fraternity+sorority+"independent+living+group"+fsilg&as_eq=&as_scoring=r&as_drrb=q&as_qdr=a&as_nsrc=MIT+Tech&as_nloc=&as_author=&as_occt=any&q="Sigma+Chi"+OR+fraternity+OR+sorority+OR+"independent+living+group"+OR+fsilg+source:"MIT+Tech"&um=1&ie=UTF-8&output=rss
+  title: "MIT Tech FSILG Articles"
+- url: https://news.google.com/news/feeds?hl=en&gl=us&as_epq="532+Beacon"&as_occt=any&as_qdr=a&as_nloc=Boston,+MA&authuser=0&q="532+Beacon"+location:Boston,_MA&um=1&ie=UTF-8&output=rss
+  title: "532 Beacon News Search"
+- url: http://ailg.mit.edu/feed/
+- url: http://craigmod.com/rss/
+- url: http://booktwo.org/feed/
+- url: http://hughmcguire.net/feed/
+- url: http://growingupmaine.blogspot.com/feeds/posts/default
+- url: http://wordpress.mrreid.org/feed/
+- url: http://feeds.feedburner.com/Betterexplained
+- url: http://www.interfluidity.com/feed
+- url: http://feeds.feedburner.com/economist/blogs/freeexchange/
+- url: http://www.economist.com/rss/finance_and_economics_rss.xml
+- url: http://marketdesigner.blogspot.com/feeds/posts/default
+- url: http://lda-architectureinteriors.blogspot.com/feeds/posts/default
+- url: http://www.designsponge.com/category/before-and-after/feed
+- url: http://www.designsponge.com/category/interiors/feed
+- url: http://krugman.blogs.nytimes.com/feed/
+- url: https://feeds.feedburner.com/dydan1
+- url: http://www.sigalow.com/feed/
+- url: http://www.therestisnoise.com/rss.xml
+- url: http://spacenews.com/feed/
+- url: https://spaceflightnow.com/feed/
+- url: http://www.spaceflightinsider.com/feed/
+- url: http://everythingisaremix.info/blog?format=RSS
+- url: http://www.niemanlab.org/feed/
+  post_processors:
+    - daily_digest
+- url: http://randsinrepose.com/feed/
+- url: http://scraplab.net/feed/
+- url: http://www.aaronland.info/weblog/syndication/atom-1.0.xml
+- url: http://www.weather.gov/rss_page.php?site_name=nws
+- url: http://outofedenwalk.nationalgeographic.com/feed
+- url: http://vincent.bernat.im/en/blog/atom.xml
+- url: http://feeds.scpr.org/893KpccSouthernCaliforniaNews
+  post_processors:
+    - daily_digest
+- url: http://www.latimes.com/local/rss2.0.xml
+  post_processors:
+    - daily_digest
+- url: http://www.latimes.com/home/hometours/rss2.0.xml
+    - daily_digest
+- url: http://apod.nasa.gov/apod.rss
+- url: http://phenomena.nationalgeographic.com/blog/all-over-the-map/feed/
+- url: http://mcfunley.com/feed/atom
+- url: https://mikaintokyo.wordpress.com/feed/
+- url: http://feeds.feedburner.com/nasawatch/Aekt
+- url: http://feeds.feedburner.com/marginalrevolution/feed
+- url: https://theaviationist.com/feed/
+  post_processors:
+    - daily_digest
+- url: http://www.weatherwest.com/feed
+#- url: http://www.nhc.noaa.gov/index-at.xml
+#  post_processors:
+#    - daily_digest
+#- url: http://www.nhc.noaa.gov/index-ep.xml
+#  post_processors:
+#    - daily_digest
