@@ -10,6 +10,7 @@
   post_processors: 
     - daily_digest
 - url: https://www.oreilly.com/topics/four-short-links/feed.atom
+- url: https://www.oreilly.com/topics/economy/feed.atom
 - url: http://earthobservatory.nasa.gov/Feeds/rss/eo2.rss
 - url: http://feeds.kottke.org/main
 - url: http://feeds.feedburner.com/CalculatedRisk
@@ -81,6 +82,7 @@
   post_processors:
     - daily_digest
 - url: http://www.latimes.com/home/hometours/rss2.0.xml
+  post_processors:
     - daily_digest
 - url: http://apod.nasa.gov/apod.rss
 - url: http://phenomena.nationalgeographic.com/blog/all-over-the-map/feed/
@@ -92,9 +94,14 @@
   post_processors:
     - daily_digest
 - url: http://www.weatherwest.com/feed
-#- url: http://www.nhc.noaa.gov/index-at.xml
-#  post_processors:
-#    - daily_digest
-#- url: http://www.nhc.noaa.gov/index-ep.xml
-#  post_processors:
-#    - daily_digest
+- url: http://www.frankchimero.com/feed.xml
+- url: https://feeds.feedburner.com/eso_potw
+- url: http://www.thespacereview.com/articles.xml
+- url: http://arstechnica.com/author/ericberger/feed/
+- url: http://nhc.noaa.gov/gtwo.xml
+- url: http://www.wrh.noaa.gov/total_forecast/getprod.php?afos=xxxafdlox&wfo=lox&version=0&font=120&xml
+- url: http://danluu.com/atom.xml
+- url: https://thetech.com/feed
+  post_processors:
+    - daily_digest
+     

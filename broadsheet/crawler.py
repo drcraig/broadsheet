@@ -18,7 +18,8 @@ import feedparser
 #requests = eventlet.import_patched('requests')
 import requests
 
-feedparser.USER_AGENT = "Broadsheet/0.1 +http://dancraig.net/broadsheet/"
+USER_AGENT =  "Broadsheet/0.1 +http://dancraig.net/broadsheet/"
+feedparser.USER_AGENT = USER_AGENT
 feedparser._HTMLSanitizer.acceptable_elements.add('iframe')
 
 pool = eventlet.GreenPool()
@@ -27,7 +28,7 @@ def crawl_feed(url, feed_title=None):
     """Take a feed, return articles"""
     print url
     try:
-        response = requests.get(url)
+        response = requests.get(url, headers={"User-Agent": USER_AGENT})
         print response
         if not response.ok:
             return []
@@ -43,7 +44,7 @@ def crawl_feed(url, feed_title=None):
 
 def key_by_date(article):
     """Key function to sort articles by date"""
-    return article.get('updated_parsed') or article.get('published_parsed')
+    return article.get('published_parsed') or article.get('updated_parsed') 
 
 
 def listify(articles, title=None):
@@ -75,7 +76,7 @@ def truncate(articles, max_num=5):
     return articles[:max_num]
 
 def article_timestamp(article):
-    timestruct = article.get('updated_parsed') or article.get('published_parsed')
+    timestruct =  article.get('published_parsed') or article.get('updated_parsed')
     if not timestruct:
         return None
     return datetime.fromtimestamp(mktime(timestruct))

@@ -31,3 +31,4 @@ pip-delete-this-directory.txt
 nosetests.xml
 coverage.xml
 
+.venv/
