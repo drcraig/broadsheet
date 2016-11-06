@@ -32,6 +32,9 @@ def crawl_feed(url, feed_title=None):
             return []
         result = feedparser.parse(response.text)
 
+        if feed_title:
+            result.feed['title'] = feed_title
+
         entries = [entry for entry in result.entries]
         for entry in entries:
             entry['feed'] = result.feed

@@ -23,6 +23,7 @@
 - url: https://feeds.feedburner.com/robinsloan
 - url: https://feeds.feedburner.com/RussellDavies
 - url: http://www.universalhub.com/node/feed
+  title: Universal Hub
   post_processors: 
     - daily_digest
 - url: http://alum.mit.edu/pages/sliceofmit/feed/
@@ -103,9 +104,11 @@
 - url: http://arstechnica.com/author/ericberger/feed/
 - url: http://nhc.noaa.gov/gtwo.xml
 - url: http://www.wrh.noaa.gov/total_forecast/getprod.php?afos=xxxafdlox&wfo=lox&version=0&font=120&xml
+  title: NWS Los Angeles Area Forecast Discussion
   post_processors:
     - pre
 - url: http://www.wrh.noaa.gov/total_forecast/getprod.php?afos=xxxafdsgx&wfo=sgx&version=0&font=120&xml
+  title: NWS San Diego Area Forecast Discussion
   post_processors:
     - pre
 - url: http://danluu.com/atom.xml
