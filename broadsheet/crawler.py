@@ -1,6 +1,7 @@
 import argparse
 from datetime import datetime, date, time
 import itertools
+from multiprocessing.dummy import Pool as ThreadPool
 import sys
 from time import mktime
 
@@ -139,14 +140,16 @@ def process_feed(url, alternate_title=None, post_procs=None):
     return articles
 
 
+def process_feed_mapper(args):
+    return process_feed(*args)
+
+
 def process_subscriptions(subscriptions):
-    all_articles = []
-    for subscription in subscriptions:
-        url = subscription['url']
-        alternate_title = subscription.get('title')
-        post_processors = subscription.get('post_processors', [])
-        articles = process_feed(url, alternate_title, post_processors)
-        all_articles.extend(articles)
+    process_feed_args = [(sub['url'], sub.get('title'), sub.get('post_processors', []))
+                         for sub in subscriptions]
+    pool = ThreadPool(20)
+    results = pool.map(process_feed_mapper, process_feed_args)
+    all_articles = list(itertools.chain(*results))
     all_articles.sort(key=key_by_date, reverse=True)
     return list(all_articles)
 
