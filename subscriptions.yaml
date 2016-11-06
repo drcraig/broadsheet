@@ -100,6 +100,11 @@
 - url: http://arstechnica.com/author/ericberger/feed/
 - url: http://nhc.noaa.gov/gtwo.xml
 - url: http://www.wrh.noaa.gov/total_forecast/getprod.php?afos=xxxafdlox&wfo=lox&version=0&font=120&xml
+  post_processors:
+    - pre
+- url: http://www.wrh.noaa.gov/total_forecast/getprod.php?afos=xxxafdsgx&wfo=sgx&version=0&font=120&xml
+  post_processors:
+    - pre
 - url: http://danluu.com/atom.xml
 - url: https://thetech.com/feed
   post_processors:

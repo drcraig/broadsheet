@@ -253,3 +253,8 @@ article > main .related-links a {
     border: none;
     font-family: 'Archivo Narrow', sans-serif;
 }
+
+article > main .preformatted {
+    white-space: pre-line;
+    font-family: monospace;
+}

@@ -124,6 +124,12 @@ def daily(articles, day=None):
     return filter_by_datetime_range(articles, start=day)
 
 
+def pre(articles):
+    for article in articles:
+        article.preformatted = True
+        yield article
+
+
 def apod_add_pubdate(articles):
     for article in articles:
         # Parse article link

@@ -65,15 +65,16 @@
     {% endfor %}
     {% if article.content %}
         {% for content in article.content %}
-        <div>
+        <div class="{%- if article.preformatted %}preformatted{% endif -%}">
             {% if content.type in ['text/html', 'application/xhtml+xml'] %}
                 {{ content.value }}
             {% endif %}
         </div>
         {% endfor %}
     {% elif article.summary %}
-        <div>
+        <div class="{%- if article.preformatted %}preformatted{% endif -%}">
         {{ article.summary }}
+        </div>
     {% endif %}
 
     {% for link in article.links if link.rel == 'related' %}
