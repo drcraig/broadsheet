@@ -6,7 +6,6 @@ from time import mktime
 
 import dateparser
 from jinja2 import Environment, FileSystemLoader
-import eventlet
 import yaml
 
 import ssl
@@ -19,8 +18,6 @@ import requests
 USER_AGENT = "Broadsheet/0.1 +http://dancraig.net/broadsheet/"
 feedparser.USER_AGENT = USER_AGENT
 feedparser._HTMLSanitizer.acceptable_elements.add('iframe')
-
-pool = eventlet.GreenPool()
 
 
 def crawl_feed(url, feed_title=None):

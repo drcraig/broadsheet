@@ -1,5 +1,4 @@
 feedparser
-eventlet
 dateparser
 pyOpenSSL
 ndg-httpsclient
