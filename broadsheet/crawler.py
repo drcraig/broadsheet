@@ -2,8 +2,10 @@ import argparse
 from datetime import datetime, date, time
 import itertools
 from multiprocessing.dummy import Pool as ThreadPool
+import re
 import sys
 from time import mktime
+from urlparse import urlparse
 
 import dateparser
 from jinja2 import Environment, FileSystemLoader
@@ -23,10 +25,9 @@ feedparser._HTMLSanitizer.acceptable_elements.add('iframe')
 
 def crawl_feed(url, feed_title=None):
     """Take a feed, return articles"""
-    print url
     try:
         response = requests.get(url, headers={"User-Agent": USER_AGENT})
-        print response
+        print url, response
         if not response.ok:
             return []
         result = feedparser.parse(response.text)
@@ -130,11 +131,15 @@ def pre(articles):
         yield article
 
 
-def apod_add_pubdate(articles):
+def apod_fix_pubdate(articles):
+    """Astronomy Picture of the Date (http://apod.nasa.gov/apod/) does not put dates
+    in the articles, but can be derived from the URL"""
     for article in articles:
-        # Parse article link
-        # apod/apYYMMDD.html
-        # create struct_time for that
+        url = urlparse(article['link'])
+        if url.path == '/apod/astropix.html':
+            article['published_parsed'] = date.today().timetuple()
+        elif re.match(r'/apod/ap\d{6}.html', url.path):
+            article['published_parsed'] = datetime.strptime(url.path, '/apod/ap%y%m%d.html').timetuple()
         yield article
 
 

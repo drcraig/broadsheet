@@ -85,6 +85,9 @@
   post_processors:
     - daily_digest
 - url: http://apod.nasa.gov/apod.rss
+  title: Astronomy Picture of the Day
+  post_processors:
+    - apod_fix_pubdate
 - url: http://phenomena.nationalgeographic.com/blog/all-over-the-map/feed/
 - url: http://mcfunley.com/feed/atom
 - url: https://mikaintokyo.wordpress.com/feed/
