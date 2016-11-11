@@ -146,6 +146,13 @@ def apod_fix_pubdate(articles):
         yield article
 
 
+def nws_afd_synopsis_only(articles):
+    """NWS Area Forecast Discsussions are long. Only get the synposis"""
+    for article in articles:
+        article['description'] = article['description'].split(r'&&')[0]
+        yield article
+
+
 def process_feed(url, alternate_title=None, post_procs=None):
     post_procs = post_procs or []
     articles = crawl_feed(url, feed_title=alternate_title)

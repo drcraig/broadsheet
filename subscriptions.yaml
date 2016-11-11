@@ -106,10 +106,12 @@
 - url: http://www.wrh.noaa.gov/total_forecast/getprod.php?afos=xxxafdlox&wfo=lox&version=0&font=120&xml
   title: NWS Los Angeles Area Forecast Discussion
   post_processors:
+    - nws_afd_synopsis_only
     - pre
 - url: http://www.wrh.noaa.gov/total_forecast/getprod.php?afos=xxxafdsgx&wfo=sgx&version=0&font=120&xml
   title: NWS San Diego Area Forecast Discussion
   post_processors:
+    - nws_afd_synopsis_only
     - pre
 - url: http://danluu.com/atom.xml
 - url: https://thetech.com/feed
