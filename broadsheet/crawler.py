@@ -74,10 +74,6 @@ def listify(articles, title=None):
     })]
 
 
-def truncate(articles, max_num=5):
-    return articles[:max_num]
-
-
 def article_timestamp(article):
     timestruct = article.get('published_parsed') or article.get('updated_parsed')
     if not timestruct:
@@ -121,11 +117,6 @@ def filter_by_datetime_range(articles, start=None, end=None):
         if end and timestamp > end:
             continue
         yield article
-
-
-def daily(articles, day=None):
-    day = day or date.today()
-    return filter_by_datetime_range(articles, start=day)
 
 
 def pre(articles):
