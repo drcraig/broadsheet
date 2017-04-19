@@ -20,8 +20,8 @@
 - url: http://bostonography.com/feed/
 - url: http://feeds.feedburner.com/Betterexplained
 - url: http://theoatmeal.com/feed/rss
-- url: https://feeds.feedburner.com/robinsloan
-- url: https://feeds.feedburner.com/RussellDavies
+- url: http://feeds.feedburner.com/robinsloan
+- url: http://feeds.feedburner.com/RussellDavies
 - url: http://www.universalhub.com/node/feed
   title: Universal Hub
   post_processors: 
@@ -51,7 +51,6 @@
 - url: http://hughmcguire.net/feed/
 - url: http://growingupmaine.blogspot.com/feeds/posts/default
 - url: http://wordpress.mrreid.org/feed/
-- url: http://feeds.feedburner.com/Betterexplained
 - url: http://www.interfluidity.com/feed
 - url: http://feeds.feedburner.com/economist/blogs/freeexchange/
 - url: http://www.economist.com/rss/finance_and_economics_rss.xml
@@ -117,4 +116,9 @@
 - url: https://thetech.com/feed
   post_processors:
     - daily_digest
-     
+- url: https://primitivetechnology.wordpress.com/feed/ 
+- url: https://www.joelonsoftware.com/feed/
+- url: http://www.lobbyseven.com/feed.xml
+- url: https://waynehale.wordpress.com/feed/
+- url: http://www.dcreport.org/feed/
+- url: http://www.laweekly.com/longform.rss
