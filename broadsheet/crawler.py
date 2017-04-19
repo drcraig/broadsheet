@@ -40,7 +40,7 @@ def crawl_feed(url, feed_title=None):
             entry['feed'] = result.feed
         return entries
     except Exception as e:
-        print e
+        print url, e
         return []
 
 
