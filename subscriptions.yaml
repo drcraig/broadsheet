@@ -36,7 +36,7 @@
 - url: http://www.holovaty.com/rss/
 - url: http://www.zephoria.org/thoughts/feed
 - url: http://feeds.dashes.com/AnilDash
-- url: https://www.alistapart.com/site/rss
+- url: https://alistapart.com/main/feed
 - url: http://blog.okcupid.com/index.php/feed/
 - url: http://mikethemadbiologist.com/feed/
 - url: http://www.guardian.co.uk/profile/martin-robbins/rss
@@ -97,7 +97,7 @@
   post_processors:
     - daily_digest
 - url: http://www.weatherwest.com/feed
-- url: http://www.frankchimero.com/feed.xml
+- url: https://www.frankchimero.com/feed.xml
 - url: https://feeds.feedburner.com/eso_potw
 - url: http://www.thespacereview.com/articles.xml
 - url: http://arstechnica.com/author/ericberger/feed/
