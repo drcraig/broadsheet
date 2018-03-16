@@ -126,3 +126,5 @@
 - url: http://feeds.feedburner.com/DrHousingBubble-HowILearnedToLoveSocal
 - url: http://locusmag.com/category/features/commentary/cory-doctorow/feed/
 - url: https://news.ycombinator.com/rss
+  post_processors: 
+    - daily_digest
