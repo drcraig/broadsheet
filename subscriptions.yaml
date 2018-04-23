@@ -128,3 +128,4 @@
 - url: https://news.ycombinator.com/rss
   post_processors: 
     - daily_digest
+- url: http://worrydream.com/feed.xml
