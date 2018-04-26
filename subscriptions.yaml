@@ -129,3 +129,4 @@
   post_processors: 
     - daily_digest
 - url: http://worrydream.com/feed.xml
+- url: http://cityobservatory.org/feed/
