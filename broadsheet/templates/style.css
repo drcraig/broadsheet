@@ -156,7 +156,6 @@ article header .timestamp time {
 
 article * {
     max-width: 100%;
-    overflow-x: scroll;
 }
 
 article:after {
