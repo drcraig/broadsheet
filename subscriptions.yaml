@@ -9,7 +9,7 @@
 - url: http://www.wired.com/feed/
   post_processors: 
     - daily_digest
-- url: https://www.oreilly.com/topics/four-short-links/feed.atom
+- url: https://www.oreilly.com/radar/topics/four-short-links/feed/index.xml
 - url: https://www.oreilly.com/topics/economy/feed.atom
 - url: http://earthobservatory.nasa.gov/Feeds/rss/eo2.rss
 - url: http://feeds.kottke.org/main
