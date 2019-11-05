@@ -136,3 +136,9 @@
 - url: https://twobithistory.org/feed.xml
 - url: https://pythonspeed.com/atom.xml
 - url: https://caseyhandmer.wordpress.com/feed/
+- url: https://www.mlbtraderumors.com/boston-red-sox/feed
+  post_processors:
+    - daily_digest
+- url: https://www.mlbtraderumors.com/los-angeles-angels/feed
+  post_processors:
+    - daily_digest
