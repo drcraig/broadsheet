@@ -142,3 +142,5 @@
 - url: https://www.mlbtraderumors.com/los-angeles-angels/feed
   post_processors:
     - daily_digest
+- url: https://acoup.blog/feed/
+- url: http://www.datagenetics.com/feed/rss.xml
