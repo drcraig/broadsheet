@@ -11,7 +11,7 @@
     - daily_digest
 - url: https://www.oreilly.com/radar/topics/four-short-links/feed/index.xml
 - url: https://www.oreilly.com/topics/economy/feed.atom
-- url: http://earthobservatory.nasa.gov/Feeds/rss/eo2.rss
+- url: https://earthobservatory.nasa.gov/feeds/image-of-the-day.rss
 - url: http://feeds.kottke.org/main
 - url: http://feeds.feedburner.com/CalculatedRisk
 - url: http://feeds2.feedburner.com/ButtonwoodsNotebook
@@ -32,7 +32,6 @@
 - url: http://feeds.feedburner.com/schneier/fulltext
 - url: http://feeds2.feedburner.com/subtraction
 - url: http://www.aeonmagazine.com/feed/
-- url: http://clivethompson.net/feed/
 - url: http://www.holovaty.com/rss/
 - url: http://www.zephoria.org/thoughts/feed
 - url: http://feeds.dashes.com/AnilDash
@@ -51,7 +50,6 @@
 - url: http://feeds.feedburner.com/economist/blogs/freeexchange/
 - url: http://www.economist.com/rss/finance_and_economics_rss.xml
 - url: http://marketdesigner.blogspot.com/feeds/posts/default
-- url: http://lda-architectureinteriors.blogspot.com/feeds/posts/default
 - url: http://www.designsponge.com/category/before-and-after/feed
 - url: http://www.designsponge.com/category/interiors/feed
 - url: http://krugman.blogs.nytimes.com/feed/
@@ -69,15 +67,12 @@
 - url: http://scraplab.net/feed/
 - url: http://www.aaronland.info/weblog/syndication/atom-1.0.xml
 - url: http://www.weather.gov/rss_page.php?site_name=nws
-- url: http://outofedenwalk.nationalgeographic.com/feed
+- url: https://www.nationalgeographic.org/projects/out-of-eden-walk/feeds/articles/
 - url: http://vincent.bernat.im/en/blog/atom.xml
 - url: http://feeds.scpr.org/893KpccSouthernCaliforniaNews
   post_processors:
     - daily_digest
 - url: http://www.latimes.com/local/rss2.0.xml
-  post_processors:
-    - daily_digest
-- url: http://www.latimes.com/home/hometours/rss2.0.xml
   post_processors:
     - daily_digest
 - url: http://apod.nasa.gov/apod.rss
@@ -117,7 +112,6 @@
 - url: http://www.lobbyseven.com/feed.xml
 - url: https://waynehale.wordpress.com/feed/
 - url: http://www.dcreport.org/feed/
-- url: http://www.laweekly.com/longform.rss
 - url: http://devinhelton.com/rss.xml
 - url: http://joyofsox.blogspot.com/feeds/posts/default
 - url: https://www.ribbonfarm.com/feed/
@@ -131,7 +125,7 @@
 - url: http://worrydream.com/feed.xml
 - url: http://cityobservatory.org/feed/
 - url: https://www.b-list.org/feeds/entries/
-- url: https://www.bloomberg.com/view/rss/contributors/noah-smith.rss
+- url: https://www.bloomberg.com/authors/AR3OYuAmvcU/noah-smith.rss
 - url: https://mikefitz.me/feed.xml
 - url: https://twobithistory.org/feed.xml
 - url: https://pythonspeed.com/atom.xml
