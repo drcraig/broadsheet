@@ -1,8 +1,5 @@
 feedparser
 dateparser
-pyOpenSSL
-ndg-httpsclient
-pyasn1
 jinja2
-requests[security]
+requests
 pyyaml

@@ -1,22 +1,22 @@
 import argparse
 from datetime import datetime, date, time
 import itertools
+import logging
 from multiprocessing.dummy import Pool as ThreadPool
 import re
 import sys
 from time import mktime
-from urlparse import urlparse
+from urllib.parse import urlparse
 
 import dateparser
 from jinja2 import Environment, FileSystemLoader
 import yaml
-
-import ssl
-if hasattr(ssl, '_create_unverified_context'):
-        ssl._create_default_https_context = ssl._create_unverified_context
-
 import feedparser
 import requests
+
+
+logging.basicConfig(level=logging.INFO)
+log = logging.getLogger(__name__)
 
 USER_AGENT = "Broadsheet/0.1 +http://dancraig.net/broadsheet/"
 feedparser.USER_AGENT = USER_AGENT
@@ -27,7 +27,7 @@ def crawl_feed(url, feed_title=None):
     """Take a feed, return articles"""
     try:
         response = requests.get(url, headers={"User-Agent": USER_AGENT})
-        print url, response
+        log.info(f'{url} {response}')
         if not response.ok:
             return []
         result = feedparser.parse(response.text)
@@ -40,7 +40,7 @@ def crawl_feed(url, feed_title=None):
             entry['feed'] = result.feed
         return entries
     except Exception as e:
-        print url, e
+        log.info(f'{url} {e}')
         return []
 
 
@@ -210,7 +210,7 @@ def cli():
 
     subscriptions = yaml.load(args.subscriptions)
     html = main(subscriptions, start=args.start, previous=args.previous)
-    args.outfile.write(html.encode('utf-8'))
+    args.outfile.write(html)
 
 
 if __name__ == '__main__':

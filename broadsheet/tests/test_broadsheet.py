@@ -4,4 +4,4 @@ import broadsheet
 
 
 def test_pep_396_version():
-    assert isinstance(broadsheet.__version__, basestring)
+    assert isinstance(broadsheet.__version__, str)
