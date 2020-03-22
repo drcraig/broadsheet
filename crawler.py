@@ -172,7 +172,7 @@ def time_struct_to_datetime(time_struct):
 
 def render(articles, timestamp=None, previous=None):
     timestamp = timestamp or datetime.now()
-    env = Environment(loader=FileSystemLoader('broadsheet/templates'),
+    env = Environment(loader=FileSystemLoader('templates'),
                       extensions=['jinja2.ext.with_'])
     env.filters['datetime'] = time_struct_to_datetime
 
