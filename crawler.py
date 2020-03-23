@@ -7,6 +7,8 @@ import re
 import sys
 from time import mktime
 from urllib.parse import urlparse
+import asyncio
+import aiohttp
 
 import dateparser
 from jinja2 import Environment, FileSystemLoader
@@ -42,6 +44,27 @@ def crawl_feed(url, feed_title=None):
     except Exception as e:
         log.info(f'{url} {e}')
         return []
+
+
+async def crawl_feed_async(url, feed_title=None):
+    timeout = aiohttp.ClientTimeout(total=30)
+    async with aiohttp.ClientSession(headers={"User-Agent": USER_AGENT}) as session:
+        try:
+            async with session.get(url) as response:
+                raw_feed = await response.text()
+                log.info(f'{response.status} {url}')
+                result = feedparser.parse(raw_feed)
+
+                if feed_title:
+                    result.feed['title'] = feed_title
+
+                entries = [entry for entry in result.entries]
+                for entry in entries:
+                    entry['feed'] = result.feed
+                return entries
+        except Exception as exc:
+            log.info(f'{url} {exc}')
+            return []
 
 
 def key_by_date(article):
@@ -152,6 +175,14 @@ def process_feed(url, alternate_title=None, post_procs=None):
     return articles
 
 
+async def process_feed_async(url, alternate_title=None, post_procs=None):
+    post_procs = post_procs or []
+    articles = await crawl_feed_async(url, feed_title=alternate_title)
+    for post_processor in post_procs:
+        articles = list(globals()[post_processor](articles))
+    return articles
+
+
 def process_feed_mapper(args):
     return process_feed(*args)
 
@@ -161,6 +192,17 @@ def process_subscriptions(subscriptions):
                          for sub in subscriptions]
     pool = ThreadPool(20)
     results = pool.map(process_feed_mapper, process_feed_args)
+    all_articles = list(itertools.chain(*results))
+    all_articles.sort(key=key_by_date, reverse=True)
+    return list(all_articles)
+
+
+async def process_subscriptions_async(subscriptions):
+    results = await asyncio.gather(
+        *(process_feed_async(
+            sub['url'],
+            alternate_title=sub.get('title'),
+            post_procs=sub.get('post_processors')) for sub in subscriptions))
     all_articles = list(itertools.chain(*results))
     all_articles.sort(key=key_by_date, reverse=True)
     return list(all_articles)
@@ -181,8 +223,11 @@ def render(articles, timestamp=None, previous=None):
                                                  previous=previous)
 
 
-def main(subscriptions, start=None, stop=None, previous=None):
-    all_articles = process_subscriptions(subscriptions)
+def main(subscriptions, start=None, stop=None, previous=None, use_async=False):
+    if use_async:
+        all_articles = asyncio.run(process_subscriptions_async(subscriptions))
+    else:
+        all_articles = process_subscriptions(subscriptions)
     all_articles = filter_by_datetime_range(all_articles, start=start)
     return render(articles=all_articles, previous=previous)
 
@@ -205,11 +250,16 @@ def cli():
                         default=sys.stdout)
     parser.add_argument('subscriptions', nargs='?', type=argparse.FileType('r'),
                         default=sys.stdin)
+    parser.add_argument('-a', '--async', dest='use_async', action='store_true',
+                        default=False)
 
     args = parser.parse_args()
 
     subscriptions = yaml.load(args.subscriptions)
-    html = main(subscriptions, start=args.start, previous=args.previous)
+    html = main(subscriptions,
+                start=args.start,
+                previous=args.previous,
+                use_async=args.use_async)
     args.outfile.write(html)
 
 

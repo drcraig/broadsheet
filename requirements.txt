@@ -3,3 +3,4 @@ dateparser
 jinja2
 requests
 pyyaml
+aiohttp
