@@ -1,6 +1,7 @@
-feedparser
+feedparser<6
 dateparser
 jinja2
 requests
 pyyaml
 aiohttp
+certifi
