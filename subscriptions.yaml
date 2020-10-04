@@ -31,7 +31,7 @@
 - url: http://feeds.feedburner.com/PhilGyfordsWriting
 - url: http://feeds.feedburner.com/schneier/fulltext
 - url: http://feeds2.feedburner.com/subtraction
-- url: http://www.aeonmagazine.com/feed/
+- url: https://aeon.co/feed
 - url: http://www.holovaty.com/rss/
 - url: http://www.zephoria.org/thoughts/feed
 - url: http://feeds.dashes.com/AnilDash
@@ -88,7 +88,7 @@
   post_processors:
     - daily_digest
 - url: http://www.weatherwest.com/feed
-- url: https://www.frankchimero.com/feed.xml
+- url: https://frankchimero.com/feed.xml
 - url: https://feeds.feedburner.com/eso_potw
 - url: http://www.thespacereview.com/articles.xml
 - url: http://arstechnica.com/author/ericberger/feed/
