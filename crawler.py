@@ -5,7 +5,7 @@ import logging
 from multiprocessing.dummy import Pool as ThreadPool
 import re
 import sys
-from time import mktime
+import time
 from urllib.parse import urlparse
 import asyncio
 import aiohttp
@@ -69,7 +69,9 @@ async def crawl_feed_async(url, feed_title=None):
 
 def key_by_date(article):
     """Key function to sort articles by date"""
-    return article.get('published_parsed') or article.get('updated_parsed')
+    return article.get('published_parsed') or \
+           article.get('updated_parsed') or \
+           time.localtime()
 
 
 def listify(articles, title=None):
@@ -101,7 +103,7 @@ def article_timestamp(article):
     timestruct = article.get('published_parsed') or article.get('updated_parsed')
     if not timestruct:
         return None
-    return datetime.fromtimestamp(mktime(timestruct))
+    return datetime.fromtimestamp(time.mktime(timestruct))
 
 
 def article_date(article):
@@ -163,7 +165,7 @@ def apod_fix_pubdate(articles):
 def nws_afd_synopsis_only(articles):
     """NWS Area Forecast Discsussions are long. Only get the synposis"""
     for article in articles:
-        article['description'] = article['description'].split(r'&&')[0]
+        article['description'] = article.get('description', '').split(r'&&')[0]
         yield article
 
 
