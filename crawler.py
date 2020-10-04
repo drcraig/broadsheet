@@ -257,7 +257,7 @@ def cli():
 
     args = parser.parse_args()
 
-    subscriptions = yaml.load(args.subscriptions)
+    subscriptions = yaml.safe_load(args.subscriptions)
     html = main(subscriptions,
                 start=args.start,
                 previous=args.previous,
