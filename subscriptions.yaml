@@ -144,3 +144,6 @@
 - url: http://interconnected.org/home/feed
 - url: https://revdancatt.com/rss
 - url: https://jvns.ca/atom.xml
+- url: https://oklahomawatch.org/feed/
+  post_processors:
+    - daily_digest
