@@ -137,7 +137,7 @@
   post_processors:
     - daily_digest
 - url: https://acoup.blog/feed/
-- url: http://www.datagenetics.com/feed/rss.xml
+- url: https://www.datagenetics.com/feed/rss.xml
 - url: https://blog.jessitron.com/feed/
 - url: https://m.signalvnoise.com/feed/
 - url: https://blog.miguelgrinberg.com/feed
