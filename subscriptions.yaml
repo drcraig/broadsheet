@@ -148,3 +148,4 @@
   post_processors:
     - daily_digest
 - url: https://apenwarr.ca/log/rss.php
+- url: https://rachelbythebay.com/w/atom.xml
