@@ -10,7 +10,7 @@
   post_processors: 
     - daily_digest
 - url: https://www.oreilly.com/radar/topics/four-short-links/feed/index.xml
-- url: https://www.oreilly.com/topics/economy/feed.atom
+- url: https://www.oreilly.com/radar/feed/index.xml
 - url: https://earthobservatory.nasa.gov/feeds/image-of-the-day.rss
 - url: http://feeds.kottke.org/main
 - url: http://feeds.feedburner.com/CalculatedRisk
