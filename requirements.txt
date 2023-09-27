@@ -3,6 +3,5 @@ dateparser
 jinja2
 requests
 pyyaml
-aiohttp
 certifi
 requests_cache
