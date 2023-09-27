@@ -97,7 +97,10 @@ def article_timestamp(article):
     timestruct = article.get("published_parsed") or article.get("updated_parsed")
     if not timestruct:
         return None
-    return datetime.fromtimestamp(time.mktime(timestruct))
+    try:
+        return datetime.fromtimestamp(time.mktime(timestruct))
+    except ValueError:
+        return None
 
 
 def article_date(article):
