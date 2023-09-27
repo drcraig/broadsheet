@@ -140,7 +140,7 @@
   post_processors:
     - daily_digest
 - url: https://apenwarr.ca/log/rss.php
-- url: https://rachelbythebay.com/w/atom.xml
+# - url: https://rachelbythebay.com/w/atom.xml
 - url: https://macwright.com/rss.xml
 - url: https://zapatatalksnasa.com/feed
 - url: https://lethain.com/feeds.xml
