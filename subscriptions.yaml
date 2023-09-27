@@ -1,7 +1,6 @@
 - url: https://talkingpointsmemo.com/edblog/atom/pC9CbioSxzNtMSqPf1hXKpBQhb528LxXtmuQdS49y2Ur
   title: Talking Points Memo - Editors Blog
 - url: http://daringfireball.net/feeds/main
-- url: https://www.nasa.gov/rss/image_of_the_day.rss
 - url: http://rss.slashdot.org/Slashdot/slashdotMain
   post_processors: 
     - daily_digest
@@ -15,7 +14,7 @@
 - url: http://feeds.kottke.org/main
 - url: http://feeds.feedburner.com/CalculatedRisk
 - url: http://feeds2.feedburner.com/ButtonwoodsNotebook
-- url: http://feedproxy.google.com/maproom
+- url: https://www.maproomblog.com/feed/
 - url: http://boston1775.blogspot.com/feeds/posts/default?alt=rss
 - url: http://bostonography.com/feed/
 - url: http://feeds.feedburner.com/Betterexplained
@@ -26,8 +25,6 @@
   title: Universal Hub
   post_processors: 
     - daily_digest
-- url: http://alum.mit.edu/pages/sliceofmit/feed/
-- url: http://www.npr.org/rss/rss.php?id=2100422
 - url: http://feeds.feedburner.com/PhilGyfordsWriting
 - url: http://feeds.feedburner.com/schneier/fulltext
 - url: http://feeds2.feedburner.com/subtraction
@@ -37,30 +34,25 @@
 - url: https://medium.com/feed/@zephoria
 - url: http://feeds.dashes.com/AnilDash
 - url: https://alistapart.com/main/feed
-- url: http://blog.okcupid.com/index.php/feed/
 - url: http://mikethemadbiologist.com/feed/
 - url: http://www.guardian.co.uk/profile/martin-robbins/rss
 - url: https://mit2003classnotes.blogspot.com/feeds/posts/default
-- url: http://ailg.mit.edu/feed/
+- url: https://ailg.mit.edu/rss.xml
 - url: http://craigmod.com/rss/
 - url: http://booktwo.org/feed/
-- url: http://hughmcguire.net/feed/
 - url: http://growingupmaine.blogspot.com/feeds/posts/default
 - url: http://wordpress.mrreid.org/feed/
 - url: http://www.interfluidity.com/feed
 - url: http://feeds.feedburner.com/economist/blogs/freeexchange/
 - url: http://www.economist.com/rss/finance_and_economics_rss.xml
 - url: http://marketdesigner.blogspot.com/feeds/posts/default
-- url: http://www.designsponge.com/category/before-and-after/feed
-- url: http://www.designsponge.com/category/interiors/feed
-- url: http://krugman.blogs.nytimes.com/feed/
 - url: https://feeds.feedburner.com/dydan1
 - url: http://www.sigalow.com/feed/
-- url: http://www.therestisnoise.com/rss.xml
+- url: http://feeds.feedburner.com/therestisnoise
 - url: http://spacenews.com/feed/
 - url: https://spaceflightnow.com/feed/
 - url: http://www.spaceflightinsider.com/feed/
-- url: http://everythingisaremix.info/blog?format=RSS
+- url: https://www.everythingisaremix.info/articles?format=rss
 - url: http://www.niemanlab.org/feed/
   post_processors:
     - daily_digest
@@ -110,7 +102,6 @@
     - daily_digest
 - url: https://primitivetechnology.wordpress.com/feed/ 
 - url: https://www.joelonsoftware.com/feed/
-- url: http://www.lobbyseven.com/feed.xml
 - url: https://waynehale.wordpress.com/feed/
 - url: http://www.dcreport.org/feed/
 - url: http://devinhelton.com/rss.xml
@@ -143,7 +134,7 @@
 - url: https://m.signalvnoise.com/feed/
 - url: https://blog.miguelgrinberg.com/feed
 - url: http://interconnected.org/home/feed
-- url: https://revdancatt.com/rss
+- url: https://newsletter.revdancatt.com/feed
 - url: https://jvns.ca/atom.xml
 - url: https://oklahomawatch.org/feed/
   post_processors:
