@@ -1,5 +1,5 @@
 import argparse
-from datetime import datetime, date, time
+from datetime import datetime, date, timedelta
 import itertools
 import logging
 from multiprocessing.dummy import Pool as ThreadPool
@@ -14,7 +14,7 @@ import dateparser
 from jinja2 import Environment, FileSystemLoader
 import yaml
 import feedparser
-import requests
+import requests_cache
 
 
 logging.basicConfig(level=logging.INFO)
@@ -24,11 +24,19 @@ USER_AGENT = "Broadsheet/0.1 +http://dancraig.net/broadsheet/"
 feedparser.USER_AGENT = USER_AGENT
 feedparser._HTMLSanitizer.acceptable_elements.add("iframe")
 
+session = requests_cache.CachedSession(
+    "broadsheet",
+    cache_control=True,
+    always_revalidate=True,
+    expire_after=timedelta(hours=24),
+)
+session.headers["User-Agent"] = USER_AGENT
+
 
 def crawl_feed(url, feed_title=None):
     """Take a feed, return articles"""
     try:
-        response = requests.get(url, headers={"User-Agent": USER_AGENT})
+        response = session.get(url)
         log.info(f"{url} {response}")
         if not response.ok:
             return []

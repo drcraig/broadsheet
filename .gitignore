@@ -33,3 +33,5 @@ coverage.xml
 
 .venv/
 issues/
+
+*.sqlite
