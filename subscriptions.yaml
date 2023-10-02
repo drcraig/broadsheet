@@ -32,7 +32,7 @@
 - url: http://www.holovaty.com/rss/
 - url: http://www.zephoria.org/thoughts/feed
 - url: https://medium.com/feed/@zephoria
-- url: http://feeds.dashes.com/AnilDash
+- url: http://dashes.com/feed.xml
 - url: https://alistapart.com/main/feed
 - url: http://mikethemadbiologist.com/feed/
 - url: http://www.guardian.co.uk/profile/martin-robbins/rss
@@ -129,7 +129,7 @@
   post_processors:
     - daily_digest
 - url: https://acoup.blog/feed/
-- url: https://www.datagenetics.com/feed/rss.xml
+- url: http://www.datagenetics.com/feed/rss.xml
 - url: https://blog.jessitron.com/feed/
 - url: https://m.signalvnoise.com/feed/
 - url: https://blog.miguelgrinberg.com/feed
