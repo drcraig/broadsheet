@@ -34,7 +34,7 @@ session.headers["User-Agent"] = USER_AGENT
 def crawl_feed(url, feed_title=None):
     """Take a feed, return articles"""
     try:
-        response = session.get(url)
+        response = session.get(url, timeout=10)
         log.info(f"{url} {response}")
         if not response.ok:
             return []
@@ -185,7 +185,7 @@ def process_subscriptions(subscriptions):
         (sub["url"], sub.get("title"), sub.get("post_processors", []))
         for sub in subscriptions
     ]
-    pool = ThreadPool(20)
+    pool = ThreadPool(5)
     results = pool.map(process_feed_mapper, process_feed_args)
     all_articles = list(itertools.chain(*results))
     all_articles.sort(key=key_by_date, reverse=True)
