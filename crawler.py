@@ -4,6 +4,7 @@ import itertools
 import logging
 from multiprocessing.dummy import Pool as ThreadPool
 import re
+import os
 import sys
 import time
 from urllib.parse import urlparse
@@ -23,7 +24,7 @@ feedparser.USER_AGENT = USER_AGENT
 feedparser._HTMLSanitizer.acceptable_elements.add("iframe")
 
 session = requests_cache.CachedSession(
-    "broadsheet",
+    os.environ.get("BROADSHEET_CACHE_NAME", "broadsheet"),
     cache_control=True,
     always_revalidate=True,
     expire_after=timedelta(hours=24),

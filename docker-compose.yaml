@@ -1,0 +1,9 @@
+services:
+  broadsheet:
+    build: .
+    tty: true
+    volumes:
+      - broadsheet_cache:/var/cache/broadsheet
+
+volumes:
+  broadsheet_cache:
