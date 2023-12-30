@@ -1,7 +1,11 @@
-feedparser<6
-dateparser
-jinja2
-requests
-pyyaml
-certifi
-requests_cache
+# Stuck on a bunch of old versions because prod is still running in python 3.7
+feedparser==5.2.1
+dateparser==0.7.6
+jinja2==2.11.2
+requests==2.24.0
+pyyaml==5.3.1
+certifi==2020.6.20
+requests_cache==0.9.8
+
+MarkupSafe==1.1.1
+regex==2020.5.14
