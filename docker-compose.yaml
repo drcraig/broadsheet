@@ -1,6 +1,7 @@
 services:
   crawler:
     build: .
+    init: true
     tty: true
     volumes:
       - broadsheet_cache:/var/cache/broadsheet
@@ -8,6 +9,7 @@ services:
   server:
     image: python:3.7
     command: python3 -m http.server 5000
+    init: true
     ports:
      - "5000:5000"
     working_dir: /home/appuser/output
