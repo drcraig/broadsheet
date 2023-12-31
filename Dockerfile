@@ -19,4 +19,5 @@ RUN python -m compileall .
 COPY templates /home/appuser/templates
 COPY subscriptions.yaml /home/appuser/subscriptions.yaml
 USER appuser
-CMD python crawler.py subscriptions.yaml -s yesterday
+RUN mkdir -p /home/appuser/output
+CMD python crawler.py subscriptions.yaml -s yesterday -o /home/appuser/output/index.html

@@ -1,9 +1,19 @@
 services:
-  broadsheet:
+  crawler:
     build: .
     tty: true
     volumes:
       - broadsheet_cache:/var/cache/broadsheet
+      - output:/home/appuser/output
+  server:
+    image: python:3.7
+    command: python3 -m http.server 5000
+    ports:
+     - "5000:5000"
+    working_dir: /home/appuser/output
+    volumes:
+      - output:/home/appuser/output
 
 volumes:
   broadsheet_cache:
+  output:
