@@ -254,9 +254,9 @@ def cli():
         "-p", "--previous", help="Previous date", type=datetime_type, default=None
     )
     # parser.add_argument('-z', '--time-zone', help='Time zone', default='US/Pacific')
-    parser.add_argument(
-        "-o", "--outfile", nargs="?", type=argparse.FileType("w"), default=sys.stdout
-    )
+    # Not using FileType for the outfile so that it doesn't hold the file open
+    # for write while the parser runs.
+    parser.add_argument("-o", "--outfile", nargs="?", default="-")
     parser.add_argument(
         "subscriptions", nargs="?", type=argparse.FileType("r"), default=sys.stdin
     )
@@ -269,7 +269,12 @@ def cli():
         start=args.start,
         previous=args.previous,
     )
-    args.outfile.write(html)
+
+    if args.outfile == "-":
+        sys.stdout.write(html)
+    else:
+        with open(args.outfile, "w") as outfile:
+            outfile.write(html)
 
 
 if __name__ == "__main__":
