@@ -2,16 +2,18 @@
   title: Talking Points Memo - Editors Blog
 - url: http://daringfireball.net/feeds/main
 - url: http://rss.slashdot.org/Slashdot/slashdotMain
-  post_processors: 
+  post_processors:
     - daily_digest
 - url: http://xkcd.com/atom.xml
 - url: http://www.wired.com/feed/
-  post_processors: 
+  post_processors:
     - daily_digest
 - url: https://www.oreilly.com/radar/topics/four-short-links/feed/index.xml
 - url: https://www.oreilly.com/radar/feed/index.xml
 - url: https://earthobservatory.nasa.gov/feeds/image-of-the-day.rss
 - url: http://feeds.kottke.org/main
+  post_processors:
+    - remove_redundant_title
 - url: http://feeds.feedburner.com/CalculatedRisk
 - url: http://feeds2.feedburner.com/ButtonwoodsNotebook
 - url: https://www.maproomblog.com/feed/
@@ -23,7 +25,7 @@
 - url: http://feeds.feedburner.com/RussellDavies
 - url: http://www.universalhub.com/node/feed
   title: Universal Hub
-  post_processors: 
+  post_processors:
     - daily_digest
 - url: http://feeds.feedburner.com/PhilGyfordsWriting
 - url: http://feeds.feedburner.com/schneier/fulltext
@@ -100,7 +102,7 @@
 - url: https://thetech.com/feed
   post_processors:
     - daily_digest
-- url: https://primitivetechnology.wordpress.com/feed/ 
+- url: https://primitivetechnology.wordpress.com/feed/
 - url: https://www.joelonsoftware.com/feed/
 - url: https://waynehale.wordpress.com/feed/
 - url: http://www.dcreport.org/feed/
@@ -112,7 +114,7 @@
 - url: http://feeds.feedburner.com/DrHousingBubble-HowILearnedToLoveSocal
 - url: http://locusmag.com/category/features/commentary/cory-doctorow/feed/
 - url: https://news.ycombinator.com/rss
-  post_processors: 
+  post_processors:
     - daily_digest
 - url: http://worrydream.com/feed.xml
 - url: http://cityobservatory.org/feed/

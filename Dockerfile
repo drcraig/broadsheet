@@ -20,4 +20,4 @@ COPY templates /home/appuser/templates
 COPY subscriptions.yaml /home/appuser/subscriptions.yaml
 USER appuser
 RUN mkdir -p /home/appuser/output
-CMD python crawler.py subscriptions.yaml -s yesterday -o /home/appuser/output/index.html
+CMD python crawler.py subscriptions.yaml -s "1 week ago" -o /home/appuser/output/index.html

@@ -190,6 +190,15 @@ def nws_afd_synopsis_only(articles):
         yield article
 
 
+def remove_redundant_title(articles):
+    """kottke.org has short items, where the title is a truncated version of
+    the body. Remove the title when it's just an ellipised version of the body."""
+    for article in articles:
+        if article["description"].startswith(article["title"].rstrip(".")):
+            article["title"] = ""
+            yield article
+
+
 def process_feed(url, alternate_title=None, post_procs=None):
     post_procs = post_procs or []
     articles = crawl_feed(url, feed_title=alternate_title)
