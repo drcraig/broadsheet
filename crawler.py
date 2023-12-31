@@ -9,6 +9,7 @@ import sys
 import time
 from urllib.parse import urlparse
 
+from cachelib.file import FileSystemCache
 import dateparser
 from jinja2 import Environment, FileSystemLoader
 import yaml
@@ -24,12 +25,18 @@ feedparser.USER_AGENT = USER_AGENT
 feedparser._HTMLSanitizer.acceptable_elements.add("iframe")
 
 session = requests_cache.CachedSession(
-    os.environ.get("BROADSHEET_CACHE_NAME", "broadsheet"),
+    os.path.join(os.environ.get("BROADSHEET_CACHE_DIR", ""), "broadsheet"),
     cache_control=True,
     always_revalidate=True,
     expire_after=timedelta(hours=24),
 )
 session.headers["User-Agent"] = USER_AGENT
+
+seen_cache = FileSystemCache(
+    os.path.join(os.environ.get("BROADSHEET_CACHE_DIR", ""), "seen_cache"),
+    threshold=5000,
+    default_timeout=30 * 24 * 60 * 60,
+)
 
 
 def crawl_feed(url, feed_title=None):
@@ -53,10 +60,24 @@ def crawl_feed(url, feed_title=None):
         return []
 
 
+def first_seen_date(article):
+    """Since feeds can be misconfigured for timezones or have invalid timestamps,
+    we need to keep track of when an article was first observed so it can appear
+    appropriately when it's new to you."""
+    # Articles constructed with listify, like daily digests, won't have a link.
+    if not hasattr(article, "link"):
+        return None
+
+    # .add() does not overwrite preexisting values
+    seen_cache.add(article.link, time.localtime())
+    return seen_cache.get(article.link)
+
+
 def key_by_date(article):
     """Key function to sort articles by date"""
     return (
-        article.get("published_parsed")
+        first_seen_date(article)
+        or article.get("published_parsed")
         or article.get("updated_parsed")
         or time.localtime()
     )
