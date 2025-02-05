@@ -168,3 +168,8 @@
 - url: https://www.projectbob.xyz/build-log?format=rss
 - url: https://lloydkahn.substack.com/feed
 - url: https://paulkrugman.substack.com/feed
+- url: https://simonwillison.net/atom/everything/
+- url: https://til.simonwillison.net/tils/feed.atom
+- url: https://medium.com/feed/@steve-yegge
+- url: https://www.corememory.com/feed
+- url: https://paulwaldman.substack.com/feed
